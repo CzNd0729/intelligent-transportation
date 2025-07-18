@@ -1,239 +1,71 @@
-# Full Stack FastAPI Template
-
-<a href="https://github.com/fastapi/full-stack-fastapi-template/actions?query=workflow%3ATest" target="_blank"><img src="https://github.com/fastapi/full-stack-fastapi-template/workflows/Test/badge.svg" alt="Test"></a>
-<a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/fastapi/full-stack-fastapi-template" target="_blank"><img src="https://coverage-badge.samuelcolvin.workers.dev/fastapi/full-stack-fastapi-template.svg" alt="Coverage"></a>
-
-## Technology Stack and Features
-
-- ⚡ [**FastAPI**](https://fastapi.tiangolo.com) for the Python backend API.
-    - 🧰 [SQLModel](https://sqlmodel.tiangolo.com) for the Python SQL database interactions (ORM).
-    - 🔍 [Pydantic](https://docs.pydantic.dev), used by FastAPI, for the data validation and settings management.
-    - 💾 [PostgreSQL](https://www.postgresql.org) as the SQL database.
-- 🚀 [React](https://react.dev) for the frontend.
-    - 💃 Using TypeScript, hooks, Vite, and other parts of a modern frontend stack.
-    - 🎨 [Chakra UI](https://chakra-ui.com) for the frontend components.
-    - 🤖 An automatically generated frontend client.
-    - 🧪 [Playwright](https://playwright.dev) for End-to-End testing.
-    - 🦇 Dark mode support.
-- 🐋 [Docker Compose](https://www.docker.com) for development and production.
-- 🔒 Secure password hashing by default.
-- 🔑 JWT (JSON Web Token) authentication.
-- 📫 Email based password recovery.
-- ✅ Tests with [Pytest](https://pytest.org).
-- 📞 [Traefik](https://traefik.io) as a reverse proxy / load balancer.
-- 🚢 Deployment instructions using Docker Compose, including how to set up a frontend Traefik proxy to handle automatic HTTPS certificates.
-- 🏭 CI (continuous integration) and CD (continuous deployment) based on GitHub Actions.
-
-### Dashboard Login
-
-[![API docs](img/login.png)](https://github.com/fastapi/full-stack-fastapi-template)
-
-### Dashboard - Admin
-
-[![API docs](img/dashboard.png)](https://github.com/fastapi/full-stack-fastapi-template)
-
-### Dashboard - Create User
-
-[![API docs](img/dashboard-create.png)](https://github.com/fastapi/full-stack-fastapi-template)
-
-### Dashboard - Items
-
-[![API docs](img/dashboard-items.png)](https://github.com/fastapi/full-stack-fastapi-template)
-
-### Dashboard - User Settings
-
-[![API docs](img/dashboard-user-settings.png)](https://github.com/fastapi/full-stack-fastapi-template)
-
-### Dashboard - Dark Mode
-
-[![API docs](img/dashboard-dark.png)](https://github.com/fastapi/full-stack-fastapi-template)
-
-### Interactive API Documentation
-
-[![API docs](img/docs.png)](https://github.com/fastapi/full-stack-fastapi-template)
-
-## How To Use It
-
-You can **just fork or clone** this repository and use it as is.
-
-✨ It just works. ✨
-
-### How to Use a Private Repository
-
-If you want to have a private repository, GitHub won't allow you to simply fork it as it doesn't allow changing the visibility of forks.
-
-But you can do the following:
-
-- Create a new GitHub repo, for example `my-full-stack`.
-- Clone this repository manually, set the name with the name of the project you want to use, for example `my-full-stack`:
-
-```bash
-git clone git@github.com:fastapi/full-stack-fastapi-template.git my-full-stack
-```
-
-- Enter into the new directory:
-
-```bash
-cd my-full-stack
-```
-
-- Set the new origin to your new repository, copy it from the GitHub interface, for example:
-
-```bash
-git remote set-url origin git@github.com:octocat/my-full-stack.git
-```
-
-- Add this repo as another "remote" to allow you to get updates later:
-
-```bash
-git remote add upstream git@github.com:fastapi/full-stack-fastapi-template.git
-```
-
-- Push the code to your new repository:
-
-```bash
-git push -u origin master
-```
-
-### Update From the Original Template
-
-After cloning the repository, and after doing changes, you might want to get the latest changes from this original template.
-
-- Make sure you added the original repository as a remote, you can check it with:
-
-```bash
-git remote -v
-
-origin    git@github.com:octocat/my-full-stack.git (fetch)
-origin    git@github.com:octocat/my-full-stack.git (push)
-upstream    git@github.com:fastapi/full-stack-fastapi-template.git (fetch)
-upstream    git@github.com:fastapi/full-stack-fastapi-template.git (push)
-```
-
-- Pull the latest changes without merging:
-
-```bash
-git pull --no-commit upstream master
-```
-
-This will download the latest changes from this template without committing them, that way you can check everything is right before committing.
-
-- If there are conflicts, solve them in your editor.
-
-- Once you are done, commit the changes:
-
-```bash
-git merge --continue
-```
-
-### Configure
-
-You can then update configs in the `.env` files to customize your configurations.
-
-Before deploying it, make sure you change at least the values for:
-
-- `SECRET_KEY`
-- `FIRST_SUPERUSER_PASSWORD`
-- `POSTGRES_PASSWORD`
-
-You can (and should) pass these as environment variables from secrets.
-
-Read the [deployment.md](./deployment.md) docs for more details.
-
-### Generate Secret Keys
-
-Some environment variables in the `.env` file have a default value of `changethis`.
-
-You have to change them with a secret key, to generate secret keys you can run the following command:
-
-```bash
-python -c "import secrets; print(secrets.token_urlsafe(32))"
-```
-
-Copy the content and use that as password / secret key. And run that again to generate another secure key.
-
-## How To Use It - Alternative With Copier
-
-This repository also supports generating a new project using [Copier](https://copier.readthedocs.io).
-
-It will copy all the files, ask you configuration questions, and update the `.env` files with your answers.
-
-### Install Copier
-
-You can install Copier with:
-
-```bash
-pip install copier
-```
-
-Or better, if you have [`pipx`](https://pipx.pypa.io/), you can run it with:
-
-```bash
-pipx install copier
-```
-
-**Note**: If you have `pipx`, installing copier is optional, you could run it directly.
-
-### Generate a Project With Copier
-
-Decide a name for your new project's directory, you will use it below. For example, `my-awesome-project`.
-
-Go to the directory that will be the parent of your project, and run the command with your project's name:
-
-```bash
-copier copy https://github.com/fastapi/full-stack-fastapi-template my-awesome-project --trust
-```
-
-If you have `pipx` and you didn't install `copier`, you can run it directly:
-
-```bash
-pipx run copier copy https://github.com/fastapi/full-stack-fastapi-template my-awesome-project --trust
-```
-
-**Note** the `--trust` option is necessary to be able to execute a [post-creation script](https://github.com/fastapi/full-stack-fastapi-template/blob/master/.copier/update_dotenv.py) that updates your `.env` files.
-
-### Input Variables
-
-Copier will ask you for some data, you might want to have at hand before generating the project.
-
-But don't worry, you can just update any of that in the `.env` files afterwards.
-
-The input variables, with their default values (some auto generated) are:
-
-- `project_name`: (default: `"FastAPI Project"`) The name of the project, shown to API users (in .env).
-- `stack_name`: (default: `"fastapi-project"`) The name of the stack used for Docker Compose labels and project name (no spaces, no periods) (in .env).
-- `secret_key`: (default: `"changethis"`) The secret key for the project, used for security, stored in .env, you can generate one with the method above.
-- `first_superuser`: (default: `"admin@example.com"`) The email of the first superuser (in .env).
-- `first_superuser_password`: (default: `"changethis"`) The password of the first superuser (in .env).
-- `smtp_host`: (default: "") The SMTP server host to send emails, you can set it later in .env.
-- `smtp_user`: (default: "") The SMTP server user to send emails, you can set it later in .env.
-- `smtp_password`: (default: "") The SMTP server password to send emails, you can set it later in .env.
-- `emails_from_email`: (default: `"info@example.com"`) The email account to send emails from, you can set it later in .env.
-- `postgres_password`: (default: `"changethis"`) The password for the PostgreSQL database, stored in .env, you can generate one with the method above.
-- `sentry_dsn`: (default: "") The DSN for Sentry, if you are using it, you can set it later in .env.
-
-## Backend Development
-
-Backend docs: [backend/README.md](./backend/README.md).
-
-## Frontend Development
-
-Frontend docs: [frontend/README.md](./frontend/README.md).
-
-## Deployment
-
-Deployment docs: [deployment.md](./deployment.md).
-
-## Development
-
-General development docs: [development.md](./development.md).
-
-This includes using Docker Compose, custom local domains, `.env` configurations, etc.
-
-## Release Notes
-
-Check the file [release-notes.md](./release-notes.md).
-
-## License
-
-The Full Stack FastAPI Template is licensed under the terms of the MIT license.
+# 软件综述
+## 软件应用
+     本软件是一套面向城市管理场景的智能分析系统，集成人脸识别、路面病害检测、 城市交通数据分析与可视化、日志与告警管理等多个功能模块。系统广泛适用于城市安 全管理、道路巡查、交通运营监控、智能安防、城市基础设施维护等多种应用场景。 
+     在人脸识别方面，系统可用于城市出入口、重点区域的身份验证与异常行为监测， 提升城市安全防控能力。路面病害检测模块支持对道路巡查视频或图像的自动分析，及 时发现并标注裂缝、坑洞等常见病害，辅助市政部门高效开展道路养护和维修工作。城 市交通数据分析模块能够对大规模轨迹数据进行清洗、热点识别和客流趋势分析，结合 ECharts 和地图服务实现大屏可视化展示，为交通管理部门提供科学决策依据。 
+     日志与告警模块实现了对系统操作、识别结果等关键事件的统一记录和实时告警， 支持邮件等多种通知方式，保障系统运行的安全性和可追溯性。 
+     系统采用前后端分离架构设计，支持跨平台访问，用户可通过PC、平板或移动设 备进行操作。支持本地服务器和云端平台部署，便于根据实际需求灵活扩展和维护。通 过Docker 容器化技术，系统部署与升级更加便捷，能够满足不同规模和复杂度的城市 智能交通与管理应用需求
+## 软件清单
+源代码包
+后端源码（backend 目录，含 FastAPI 项目及依赖说明）
+前端源码（frontend 目录，含 React/Vite 项目及依赖说明）
+  配置文件（.env 示例文件、Docker 配置等）
+  数据库模型与迁移脚本（如有）
+  自动化脚本（如generate-client.sh、测试脚本等）
+可执行部署包
+Docker 镜像或 Docker Compose 文件
+前端构建产物（如dist目录）
+  技术文档
+  用户手册
+安装部署指南
+接口文档（如OpenAPI/Swagger 文档） 
+数据库设计文档– 常见问题与维护手册
+测试报告
+单元测试报告
+集成测试报告
+端到端测试报告
+其他交付物
+许可证文件（LICENSE）
+第三方依赖清单
+版本说明（CHANGELOG）
+## 软件环境
+前端环境：系统前端基于React 框架开发，支持所有现代浏览器。建议使用最新版的 Google Chrome 或 Microsoft Edge，以获得最佳兼容性和性能体验。前端开发和运行环 境需支持Node.js 及 npm 包管理工具。 
+后端环境：后端采用Python语言，基于FastAPI 框架开发。可部署于Linux或Win dows 操作系统，推荐使用Linux服务器以获得更高的稳定性和安全性。后端依赖Python  3.8 及以上版本，并需安装相关依赖包（可通过uv或pip安装）。 
+AI 模型运行环境：系统集成AI识别模块，需配置PyTorch框架。建议使用具备GPU 支持的服务器以提升模型推理效率。PyTorch 版本需与硬件和 CUDA 驱动兼容，具体 版本要求请参考项目文档或AI模型说明。 
+数据库环境：系统采用PostgreSQL作为数据库，用于存储用户数据、识别结果及操作 日志。建议使用PostgreSQL 12 及以上版本。数据库可部署于本地服务器或云端，需保 证网络连通性和数据安全性。数据库连接信息需在.env配置文件中正确填写。
+### 主要组件及版本
+前端框架：React 18.x  
+前端构建工具：Vite4.x  
+可视化库：ECharts 5.x  6 
+地图服务：百度地图API最新版 
+后端框架：FastAPI 0.110.x  
+Python 运行环境：Python 3.10.x  
+AI 框架：PyTorch 2.x  
+数据库：PostgreSQL 14.x  
+容器化平台：Docker 24.x  
+包管理工具：uv0.1.x（后端），npm 9.x（前端） 
+版本控制：Git2.40.x
+## 软件组织和操作概述
+系统主要由以下操作模块组成： 
+- 人脸识别模块：负责用户身份验证与异常行为检测，支持对上传的人脸图像进 行加密存储，并具备伪造检测功能，有效提升系统安全性。该模块可与用户管理 系统联动，实现权限控制和访问日志记录。
+- 路面病害检测模块：支持用户上传巡查视频或图像，系统自动识别常见道路病 害类型（如裂缝、坑洞等），并对检测结果进行自动标注和告警。检测结果可导出 或推送至相关维护部门，实现智能化道路养护管理。
+- 城市交通数据分析模块：提供轨迹数据清洗、热点区域识别、客流趋势分析等 功能，支持多维度数据统计与分析。分析结果可通过大屏可视化界面展示，便于 管理者实时掌握城市交通运行状况，辅助决策。
+- 日志与告警模块：系统所有操作和识别结果均会被详细记录，便于后续审计和 问题追踪。支持基于邮件通知推送的统一安全告警机制，确保相关人员能够及时 获知系统异常或安全风险。 
+- 接口与协作模块：提供标准化的API接口文档（如Swagger），方便第三方系 统集成和功能扩展。支持与Git平台对接，实现代码协同开发、持续集成与自动 化部署，提升团队协作效率
+### 系统结构与组件交互简述       
+        系统采用典型的前后端分离架构，整体结构清晰、扩展性强。前端主要负责用户 界面交互、数据展示与可视化，基于React技术栈实现，用户通过浏览器访问系统，进 行各类操作与数据查看。后端负责业务逻辑处理、数据管理、权限控制及与AI模型的 对接，基于FastAPI 框架开发，提供标准化的RESTful API 接口。 
+        AI 模型服务与后端解耦，采用独立部署的方式（如单独的服务进程或容器），后端 通过HTTP 或gRPC 等接口与AI 模型服务进行数据通信，实现如人脸识别、路面病 害检测等智能分析功能。这样不仅提升了系统的灵活性和可维护性，也便于后续模型的 升级与扩展。 
+        系统还集成了统一的日志与告警模块，对用户操作、系统异常、识别结果等关键事 件进行实时记录和监控。日志信息可用于系统审计、问题追踪和安全分析，告警模块支 持邮件等多种通知方式，确保相关人员能够及时响应系统异常或安全风险。 
+
+整体组件交互流程如下： 
+用户通过前端页面发起操作请求，前端将请求数据发送至后端API。 
+后端接收请求后，进行权限校验、业务逻辑处理，并根据需要调用AI模型服务进 行智能分析。 
+AI模型服务处理数据后，将分析结果返回后端，后端再将最终结果返回前端展示。 
+所有关键操作和异常事件均由日志与告警模块统一记录和处理，确保系统运行的可追溯性与安全性
+## 意外事故及运行的备用状态和方式
+系统支持对以下故障情况进行处理与恢复： 
+- 登录异常：记录失败日志并提供重试或人工验证方式； 
+- AI 识别失败：返回可读提示信息，供用户重新上传或联系管理员； 
+- 后端服务崩溃：支持服务自动重启脚本与健康监测； 
+- 数据错误或上传失败：通过格式校验与提示窗口提醒用户。
+## 保密性和私密性
+安全措施包含 HTTPS 传输加密、存储数据加密、JWT 令牌认证和基于角色的访问 控制，防护方面实现输入验证、SQL 注入防护、CSRF 防御和接口速率限制等多重保 障机制。
