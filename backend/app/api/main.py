@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-from app.api.routes.items import router as items_router
 from app.api.routes.login import router as login_router
 from app.api.routes.private import router as private_router
 from app.api.routes.users import router as users_router
@@ -14,7 +13,6 @@ from app.api.routes.logger import router as logger_router
 from app.api.routes import alarm_process
 api_router = APIRouter()
 
-api_router.include_router(items_router)
 api_router.include_router(login_router)
 api_router.include_router(private_router)
 api_router.include_router(users_router)
